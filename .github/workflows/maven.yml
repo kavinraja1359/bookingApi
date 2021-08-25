@@ -27,7 +27,7 @@ jobs:
       
     - run: cd ~/actions-runner/deploy/bookingApi/bookingApi/Booking
     - run: sudo docker container stop bookingContainer || true
-    - run: sudo docker container prune -f
+    - run: sudo docker container rm bookingContainer || true
     - run: sudo docker image rm booking || true
     - run: sudo docker build -t booking .
     - run: sudo docker run -d --env-file /home/ubuntu/test.env -p 8090:8090 --name bookingContainer booking env | echo "success" 
